@@ -26,7 +26,6 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
-
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
@@ -39,7 +38,6 @@ $(function() {
             });
          });
 
-
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
@@ -50,9 +48,6 @@ $(function() {
                 expect(feed.name).not.toBe("");
             });
          });
-
-
-
     });
 
 
@@ -64,14 +59,11 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-
-         it('element is hidden by default', function() {
-
-            expect($(".slide-menu").css("transform")).toBeDefined();
+        it('element is hidden by default', function() {
+            expect($('.menu-hidden').length).toBe(1);
+            /*expect($(".slide-menu").css("transform")).toBeDefined();*/
         });
-
-
-         it('menu will switch to the visible state when the menu icon is clicked',function () {
+        it('menu will switch to the visible state when the menu icon is clicked',function () {
             $('.icon-list').click();
             expect($('.menu-hidden').length).toBe(0);
             $('.icon-list').click();
@@ -87,27 +79,15 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-         
-
         beforeEach(function(done){
             loadFeed(0,function(){
                 done();
             });
         });
-         
-
         it('completes its work, there is at least a single .entry element within the .feed container', function(done) {
-
-            expect($(".feed").html()).toContain('entry');
+                expect($('.feed .entry').length).not.toBe(0)
             done();
         });
-
-          it('completes its work, there is at least a single .entry element within the .feed container',  function(done) {
-
-            expect($(".feed .entry").html()).toContain('<h2>');
-            done();
-        });
-
     });
 
     
@@ -117,11 +97,7 @@ $(function() {
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
-         */
-
-         
-
-    
+         */    
         beforeEach(function (done) {
             loadFeed(0,function () {
                 feed0 = $('.feed').text();
@@ -134,8 +110,6 @@ $(function() {
             expect($('.feed').text() != feed0).toBe(true);
         });
     });
-        
-
    
     
 }());
